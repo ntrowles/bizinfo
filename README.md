@@ -27,21 +27,18 @@ This project was built using Eclipse (version: eclipse-jee-luna).
 
 2. Database
 
-   2.1 sql file
+   	2.1 Database scheme
    
-	/sqldata
+   	database name: bizinfo
+	(All .sql files under the folder /sqldata can be imported into MySQL database directly).
 	
-   2.2 configure file
+   	2.2 configure file
    
-	/WebRoot/WEB-INF/jdbc.properties
+	/resources/jdbc.properties
 	
-   2.3 tables
-   
-	database name (MySQL) - bizinfo
+   	2.3 tables
 	
-	Tables:
-	
-	- turl (URL)
+	- turl (the given URLs)
 	- tbusinesstype (Business Type)
 	- ttypefrequency (record the visitor's behavior)
 	- tparsetag (HTML Tag)
@@ -49,58 +46,62 @@ This project was built using Eclipse (version: eclipse-jee-luna).
 	- tuser (admin user)
 	- tvisitor (record visitors from their android devices)
 	- tvisitstatistics (record visitors's behavior)
+
+	2.4 Transactions (JPA)
+
+	Service class uses annotation @Transactional in method, which essentially run all the database queries execution under the method in a single transaction. 
 	
-3. Java Code Arrangement (/src):
-
-   The structure: entity - dao - service - controller
+3. Folder Structure
    
- 	. entity - hibernate - Object
- 
- 	. dao - spring - database operation
- 
- 	. service - Spring & Hibernate - access dao
- 
- 	. controller - Struts & Spring - webpage control
-
-4. configure files (/resources)
-
- 	. applicationContext.xml - Spring
- 
- 	. hibernate.cfg.xml - Hibernate (mapping for entity)
- 
- 	. struts.xml - Struts
-
-5. Folder Structure (root folder /WebRoot)
-
- 	Main page: /admin/login.jsp
- 
- 	5.1 Administration Pages
- 
-     		/admin - instruction page
-     
-     		/appdownload - reload app/download app
-     
-     		/Operation - add businesstype/url/tag
-     
-     		/presentation - links management
-
- 	5.2 Guest Pages
- 
-     		/guestUser - guest read the related links and download the android apps
-
-6. Server Configuration
+	3.1 Java Source Code (/src): entity - dao - service - controller - test
    
-  	6.1 System and Tools
+ 		. entity - hibernate - Object
+ 
+ 		. dao - spring - database operation
+ 
+ 		. service - Spring & Hibernate - access data
+ 
+ 		. controller - Struts & Spring - webpage control
+
+	3.2 XML configure files
+
+ 	. /resources/applicationContext.xml - Spring
+ 
+ 	. /resources/hibernate.cfg.xml - Hibernate
+ 
+ 	. /resources/struts.xml - Struts
+ 	
+ 	. /WebRoot/WEB-INF/web.xml - Java Servlet
+
+	3.3 Presentation (root folder /WebRoot)
+
+ 		3.3.1 Administration Pages
+ 
+     			/admin - instruction page
+     
+     			/appdownload - reload app/download app
+     
+     			/Operation - add businesstype/url/tag
+     
+     			/presentation - links management
+
+ 		3.3.2 Client Pages
+ 
+     			/guestUser - guest read the related links and download the android apps
+
+4. Deployment and Demo
+   
+  	4.1 Server Configuration
 
       		CentOS 7.0 + Tomcat 7 + MySQL server 5.6 + OpenJDK 1.7
 
-  	6.2 Deployment
+  	4.2 Deployment
   
       		- Packaged the project as bizinfo.war, then deployed to the Tomcat Server.
       
       		- imported the .sql files under /sqldata to MySQL.
 
-  	6.3 Demo (Deployed on the server at DigitalOcean.com)
+  	4.3 Demo (Deployed on the server at DigitalOcean.com)
   
       		Main Page: http://128.199.219.7:8080/bizinfo/
       
