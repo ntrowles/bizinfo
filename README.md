@@ -58,8 +58,9 @@ This project was built on the Eclipse (version: eclipse-jee-luna).
       - Packaged the project as bizinfo.war, then deployed to the Tomcat Server.
       - imported the .sql files under /sqldata to MySQL.
 
-  6.2 Access
-      Guest main page: http://localhost:8080/bizinfo/guestUser/guestlogin.jsp
-      Administrator main page: http://localhost:8080/bizinfo/admin/login.jsp
+  6.2 Demo (Deployed on the server at DigitalOcean.com)
+      Main Page: http://128.199.219.7:8080/bizinfo/
+      Guest visitor Page: http://128.199.219.7:8080/bizinfo/guestUser/guestlogin.jsp
+      Administrator login page: http://128.199.219.7:8080/bizinfo/admin/login.jsp
 
 
