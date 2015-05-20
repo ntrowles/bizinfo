@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.custom.i18n.resources" value="messages" />
+
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+	<constant name="struts.mapper.alwaysSelectFullNamespace"
+		value="false" />
+
+	<!-- <include file="com/lgq/struts/struts-businesstype.xml" /> <include 
+		file="com/lgq/struts/struts-employee.xml" /> -->
+	<!-- Normal Action mappings are defined here -->
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- Two things to Notice: 1) class is set to 'editEmployeeAction' which 
+			is bean defined by Spring context 2) We have given the method to be called 
+			here as well; -->
+		<!-- Employee -->
+		<action name="list" class="editEmployeeAction" method="listEmployees">
+			<result>/view/editEmployeeList.jsp</result>
+		</action>
+		<action name="add" class="editEmployeeAction" method="addEmployee">
+			<result type="redirect">/list</result>
+		</action>
+		<action name="deleteemployee*" class="editEmployeeAction"
+			method="deleteEmployee">
+			<param name="employee.id">{1}</param>
+			<result type="redirect">/list</result>
+		</action>
+
+
+		<!-- Add statistics from the Android App -->
+		<action name="addstatistics" class="editStatisticsAction"
+			method="addStatistics">
+			<result type="redirect">${tparselink.outlinkurl}</result>
+		</action>
+
+		<action name="listStatistics" class="editStatisticsAction"
+			method="listMstatistics">
+			<result>/statistics/showstatistics.jsp</result>
+		</action>
+
+		<action name="exporttoexcel" class="editStatisticsAction"
+			method="exportToExcel">
+			<result>/statistics/showstatistics.jsp</result>
+		</action>
+
+		<!-- Business Type -->
+		<action name="listtype" class="editBusinesstypeAction" method="listBusinesstypes">
+			<result>/Operation/addbusinesstype.jsp</result>
+		</action>
+		<action name="addtype" class="editBusinesstypeAction" method="addBusinesstype">
+			<result type="redirect">/listtype</result>
+		</action>
+		<action name="deletetype*" class="editBusinesstypeAction"
+			method="deleteBusinesstype">
+			<param name="tbusinesstype.id">{1}</param>
+			<result type="redirect">/listtype</result>
+		</action>
+
+		<!-- list all links for one type -->
+		<action name="listalltype" class="editBusinesstypeAction"
+			method="listBusinesstypes">
+			<result>/presentation/listbusinesstype.jsp</result>
+		</action>
+
+		<!-- URL -->
+		<action name="listURL" class="editParseTagAction" method="listURLs">
+			<result>/Operation/addurl.jsp</result>
+		</action>
+		<action name="addURL" class="editParseTagAction" method="addURL">
+			<result name="success">/listURL</result>
+			<result name="input">/Operation/checkExistedData.jsp</result>
+		</action>
+		<action name="deleteURL*" class="editParseTagAction" method="deleteURL">
+			<param name="turl.id">{1}</param>
+			<result type="redirect">/listURL</result>
+		</action>
+
+		<!-- Jsoup parse url -->
+		<action name="Parselinks/*/*" class="JsoupParseLinksAction"
+			method="AddBusinessLinks">
+			<param name="tparsetag.id">{1}</param>
+			<result type="redirect">/listBusinessLinks{2}</result>
+		</action>
+
+		<!-- Parse Tags -->
+		<action name="listURLTag" class="editParseTagAction" method="listParseTags">
+			<result>/Operation/addtag.jsp</result>
+		</action>
+
+		<action name="parseURL*" class="editParseTagAction" method="listParseTags">
+			<param name="turl.id">{1}</param>
+			<result>/Operation/addtag.jsp</result>
+		</action>
+
+
+		<!-- Should consider to pass the parameter in the form -->
+		<action name="addparseTag" class="editParseTagAction" method="addURLTag">
+			<result type="redirect">/parseURL${parseurlid}</result>
+		</action>
+
+		<action name="deleteTag/*/*" class="editParseTagAction" method="deleteURLTag">
+			<param name="tparsetag.id">{1}</param>
+			<param name="turl.id">{2}</param>
+			<result type="redirect">/parseURL{2}</result>
+		</action>
+
+
+		<!-- Add direct URL links -->
+
+		<action name="adddirectURL" class="editParseLinksAction"
+			method="addLink">
+			<result type="redirect">/listBusinessLinks${tparselink.typeid}</result>
+		</action>
+
+		<action name="admindirectURL" class="editBusinesstypeAction"
+			method="listBusinesstypes">
+			<result>/Operation/directurl.jsp</result>
+		</action>
+
+
+		<!-- Parse Links -->
+		<action name="listBusinessLinks*" class="editParseLinksAction"
+			method="listBusinessLinks">
+			<param name="tbusinesstype.id">{1}</param>
+			<result>/presentation/listlinks.jsp</result>
+		</action>
+
+		<action name="listLinks*" class="editParseLinksAction" method="listLinks">
+			<param name="tparselink.id">{1}</param>
+			<result>/presentation/listlinks.jsp</result>
+		</action>
+
+		<action name="deleteLink/*/*" class="editParseLinksAction"
+			method="deleteLink">
+			<param name="tparselink.id">{1}</param>
+			<param name="tparselink.typeid">{2}</param>
+			<result type="redirect">/listBusinessLinks{2}</result>
+		</action>
+
+		<action name="editLink*" class="editParseLinksAction" method="editLink">
+			<param name="tparselink.id">{1}</param>
+			<result>/Operation/editurl.jsp</result>
+		</action>
+
+		<action name="updateLink*" class="editParseLinksAction" method="updateLink">
+			<result type="redirect">/listBusinessLinks${tparselink.typeid}</result>
+		</action>
+
+		<action name="deleteHistory*" class="editParseLinksAction"
+			method="deleteHistoryLink">
+			<param name="tparselink.typeid">{1}</param>
+			<result type="redirect">/listBusinessLinks{1}</result>
+		</action>
+
+		<action name="visitLinks*" class="editParseLinksAction" method="updateLinkStatistics">
+			<param name="tparselink.id">{1}</param>
+			<result name="redirect" type="redirect">${linkurl}</result>
+		</action>
+
+		<!-- App Download -->
+		<action name="downloadPage" class="adminAction" method="listAdmin">
+			<result>/appdownload/download.jsp</result>
+		</action>
+
+		<action name="downloadapp" class="adminAction" method="listAdmin">
+			<result type="redirect">/appdownload/BizInfo.apk</result>
+		</action>
+
+
+		<action name="downloadExcel" class="editStatisticsAction" method="exportToExcel">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">fileInputStream</param>
+				<param name="contentDisposition">attachment;filename="outputdata.xls"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+
+		<!-- Admin Add Business types page -->
+		<action name="adminPage" class="adminAction" method="listAdmin">
+			<result>/admin/mainPanel.jsp</result>
+		</action>
+
+		<action name="adminBusinesstype" class="editBusinesstypeAction"
+			method="listBusinesstypes">
+			<result type="redirect">/listtype</result>
+		</action>
+
+		<!-- Admin Add URL page -->
+		<action name="adminURL" class="editURLAction" method="listURLs">
+			<result type="redirect">/listURL</result>
+		</action>
+
+		<!-- Admin list Business types page -->
+		<action name="adminBusinesslinks" class="editBusinesstypeAction"
+			method="listBusinesstypes">
+			<result type="redirect">/listalltype</result>
+		</action>
+
+
+		<!-- List & Operation & Aboutus page -->
+		<action name="showlist" class="adminAction" method="listAdmin">
+			<result type="redirect">/presentation/showlists.jsp</result>
+		</action>
+
+		<action name="showoperation" class="adminAction" method="listAdmin">
+			<result type="redirect">/Operation/showoperations.jsp</result>
+		</action>
+
+		<action name="aboutus" class="adminAction" method="listAdmin">
+			<result type="redirect">/admin/aboutus.jsp</result>
+		</action>
+
+		<!-- User Operation -->
+		<action name="listuser" class="userAction" method="listUsers">
+			<result>/admin/adduser.jsp</result>
+		</action>
+		<action name="adduser" class="userAction" method="addUser">
+			<result type="redirect">/listuser</result>
+		</action>
+
+		<!-- Send Email -->
+		<action name="sendEmail" class="sendEmailAction" method="sendEmail">
+			<result type="redirect">/guestcontactus</result>
+		</action>
+
+		<!-- Send Email -->
+		<action name="sendEmailcn" class="sendEmailAction" method="sendEmail">
+			<result type="redirect">/guestcontactuscn</result>
+		</action>
+
+		<!-- Login page -->
+		<action name="login" class="userAction" method="login">
+			<result name="success">/admin/mainPanel.jsp</result>
+			<result name="input">/admin/loginError.jsp</result>
+		</action>
+
+		<action name="logout" class="userAction" method="logout">
+			<result name="success">/admin/login.jsp</result>
+		</action>
+
+		<action name="deleteuser*" class="userAction" method="deleteUser">
+			<param name="tuser.id">{1}</param>
+			<result type="redirect">/listuser</result>
+		</action>
+
+		<!-- Guest Visitor -->
+		<action name="loginPage" class="adminAction" method="listAdmin">
+			<result type="redirect">/admin/login.jsp</result>
+		</action>
+		
+		<action name="welcomePage" class="adminAction" method="listAdmin">
+			<result type="redirect">/guestUser/guestlogin.jsp</result>
+		</action>
+
+		<action name="welcomePagecn" class="adminAction" method="listAdmin">
+			<result type="redirect">/guestUser/guestloginCN.jsp</result>
+		</action>
+
+		<action name="guestaboutus" class="adminAction" method="listAdmin">
+			<result type="redirect">/guestUser/guestaboutus.jsp</result>
+		</action>
+
+		<action name="guestaboutuscn" class="adminAction" method="listAdmin">
+			<result type="redirect">/guestUser/guestaboutusCN.jsp</result>
+		</action>
+
+		<action name="guestcontactus" class="adminAction" method="listAdmin">
+			<result type="redirect">/guestUser/guestcontactus.jsp</result>
+		</action>
+
+		<action name="guestcontactuscn" class="adminAction" method="listAdmin">
+			<result type="redirect">/guestUser/guestcontactusCN.jsp</result>
+		</action>
+
+		<action name="guestdownload" class="adminAction" method="listAdmin">
+			<result type="redirect">/guestUser/guestdownload.jsp</result>
+		</action>
+
+		<action name="guestdownloadcn" class="adminAction" method="listAdmin">
+			<result type="redirect">/guestUser/guestdownloadCN.jsp</result>
+		</action>
+
+
+		<!-- It will be added in the future -->
+		<action name="guestbusinessinformation" class="adminAction"
+			method="listAdmin">
+			<result type="redirect">/guestUser/guestbusinessinformation.jsp</result>
+		</action>
+
+		<action name="guestbusinessinformationcn" class="adminAction"
+			method="listAdmin">
+			<result type="redirect">/guestUser/guestbusinessinformationCN.jsp
+			</result>
+		</action>
+
+		<action name="guestlistBusinessLinks/*/*" class="editParseLinksAction"
+			method="listPageLinks">
+			<param name="businesstypeid">{1}</param>
+			<param name="pageNumber">{2}</param>
+			<result>/guestUser/guestlistlinks.jsp</result>
+		</action>
+
+		<action name="guestprelist/*/*" class="editParseLinksAction"
+			method="listPrePageLinks">
+			<param name="businesstypeid">{1}</param>
+			<param name="currentpage">{2}</param>
+			<result>/guestUser/guestlistlinks.jsp</result>
+		</action>
+
+		<action name="guestnextlist/*/*" class="editParseLinksAction"
+			method="listNextPageLinks">
+			<param name="businesstypeid">{1}</param>
+			<param name="currentpage">{2}</param>
+			<result>/guestUser/guestlistlinks.jsp</result>
+		</action>
+
+	</package>
+</struts>

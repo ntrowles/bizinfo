@@ -1,0 +1,13 @@
+/**********************************************/
+  Administrator Manual
+  Version 2.1
+  2015-02-09
+/**********************************************/
+
+--------- How to add new single link? -----------------
+
+You can add single link directly.  
+ - click 'operations' on the top bar
+ - click 'add single link' in the list
+ - fill in all required information
+ - click the 'submit' button, then you will see the link in the specific list

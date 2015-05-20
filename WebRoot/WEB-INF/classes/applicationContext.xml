@@ -1,0 +1,260 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:aop="http://www.springframework.org/schema/aop"   
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:jee="http://www.springframework.org/schema/jee"  
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xsi:schemaLocation="    
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">  
+
+	<!-- This bean has been referred fron struts.xml file; So type it correctly; -->
+	<!-- Make scope prototype; This is really important. -->
+	<bean name="editEmployeeAction" class="com.lgq.controller.EditEmployeeAction"
+		scope="prototype">
+		<property name="employeeManager">
+			<ref bean="employeeManager" />
+		</property>
+	</bean>
+
+	<!-- These beans are injected automatically by spring context -->
+	<bean id="employeeDAO" class="com.lgq.dao.EmployeeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="employeeManager" class="com.lgq.service.EmployeeManagerImpl">
+		<property name="employeeDAO" ref="employeeDAO" />
+	</bean>
+
+
+	<!-- Statistics Action -->
+	<bean name="editStatisticsAction" class="com.lgq.controller.EditStatisticsAction"
+		scope="prototype">
+		<property name="tvisitstatisticsManager">
+			<ref bean="tvisitstatisticsManager" />
+		</property>
+		<property name="tparselinksManager">
+			<ref bean="tparselinksManager" />
+		</property>
+		<property name="tbusinesstypeManager">
+			<ref bean="tbusinesstypeManager" />
+		</property>
+		<property name="tvisitorManager">
+			<ref bean="tvisitorManager" />
+		</property>
+	</bean>
+
+
+	<!-- These beans are injected automatically by spring context -->
+	<bean id="tvisitorDAO" class="com.lgq.dao.TvisitorDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="tvisitorManager" class="com.lgq.service.TvisitorManagerImpl">
+		<property name="tvisitorDAO" ref="tvisitorDAO" />
+	</bean>
+   
+	<!-- These beans are injected automatically by spring context -->
+	<bean id="tvisitstatisticsDAO" class="com.lgq.dao.TvisitstatisticsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="tvisitstatisticsManager" class="com.lgq.service.TvisitstatisticsManagerImpl">
+		<property name="tvisitstatisticsDAO" ref="tvisitstatisticsDAO" />
+	</bean>
+
+	<!-- User Action -->
+	<bean name="userAction" class="com.lgq.controller.UserAction"
+		scope="prototype">
+		<property name="tuserManager">
+			<ref bean="tuserManager" />
+		</property>
+	</bean>
+
+	<!-- These beans are injected automatically by spring context -->
+	<bean id="tuserDAO" class="com.lgq.dao.TuserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="tuserManager" class="com.lgq.service.TuserManagerImpl">
+		<property name="tuserDAO" ref="tuserDAO" />
+	</bean>
+
+
+	<!-- Business Type -->
+	<bean name="editBusinesstypeAction" class="com.lgq.controller.EditBusinesstypeAction"
+		scope="prototype">
+		<property name="tbusinesstypeManager">
+			<ref bean="tbusinesstypeManager" />
+		</property>
+	</bean>
+
+	<!-- These beans are injected automatically by spring context -->
+	<bean id="tbusinesstypeDAO" class="com.lgq.dao.TbusinesstypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="tbusinesstypeManager" class="com.lgq.service.TbusinesstypeManagerImpl">
+		<property name="tbusinesstypeDAO" ref="tbusinesstypeDAO" />
+	</bean>
+
+	<!-- Business Type Frequency -->
+	<!-- this action should be used in the future extension -->
+	<bean name="editTypeFrequencyAction" class="com.lgq.controller.EdittypefrequencyAction"
+		scope="prototype">
+		<property name="ttypefrequencyManager">
+			<ref bean="ttypefrequencyManager" />
+		</property>
+	</bean>
+
+	<!-- These beans are injected automatically by spring context -->
+	<bean id="ttypefrequencyDAO" class="com.lgq.dao.TtypefrequencyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="ttypefrequencyManager" class="com.lgq.service.TtypefrequencyManagerImpl">
+		<property name="ttypefrequencyDAO" ref="ttypefrequencyDAO" />
+	</bean>
+
+	<!-- URL -->
+	<bean name="editURLAction" class="com.lgq.controller.EditURLAction"
+		scope="prototype">
+		<property name="turlManager">
+			<ref bean="turlManager" />
+		</property>
+		<property name="tbusinesstypeManager">
+			<ref bean="tbusinesstypeManager" />
+		</property>
+	</bean>
+
+	<!-- These beans are injected automatically by spring context -->
+	<bean id="turlDAO" class="com.lgq.dao.TurlDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="turlManager" class="com.lgq.service.TurlManagerImpl">
+		<property name="turlDAO" ref="turlDAO" />
+	</bean>
+
+	<!-- Parse Tags -->
+	<bean name="editParseTagAction" class="com.lgq.controller.EditParseTagAction"
+		scope="prototype">
+		<property name="tparsetagManager">
+			<ref bean="tparsetagManager" />
+		</property>
+		<property name="turlManager">
+			<ref bean="turlManager" />
+		</property>
+		<property name="tbusinesstypeManager">
+			<ref bean="tbusinesstypeManager" />
+		</property>
+	</bean>
+
+	<!-- These beans are injected automatically by spring context -->
+	<bean id="tparsetagDAO" class="com.lgq.dao.TparsetagDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="tparsetagManager" class="com.lgq.service.TparsetagManagerImpl">
+		<property name="tparsetagDAO" ref="tparsetagDAO" />
+	</bean>
+
+
+	<!-- Parse Links -->
+	<bean name="editParseLinksAction" class="com.lgq.controller.EditParseLinksAction"
+		scope="prototype">
+		<property name="tparselinksManager">
+			<ref bean="tparselinksManager" />
+		</property>
+		<property name="tparsetagManager">
+			<ref bean="tparsetagManager" />
+		</property>
+		<property name="turlManager">
+			<ref bean="turlManager" />
+		</property>
+		<property name="tbusinesstypeManager">
+			<ref bean="tbusinesstypeManager" />
+		</property>
+		<property name="ttypefrequencyManager">
+			<ref bean="ttypefrequencyManager" />
+		</property>
+	</bean>
+
+	<!-- These beans are injected automatically by spring context -->
+	<bean id="tparselinksDAO" class="com.lgq.dao.TparselinksDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="tparselinksManager" class="com.lgq.service.TparselinksManagerImpl">
+		<property name="tparselinksDAO" ref="tparselinksDAO" />
+	</bean>
+
+
+	<!-- Parse Links with Jsoup -->
+	<bean name="JsoupParseLinksAction" class="com.lgq.controller.JsoupParseLinksAction"
+		scope="prototype">
+		<property name="tparselinksManager">
+			<ref bean="tparselinksManager" />
+		</property>
+		<property name="tparsetagManager">
+			<ref bean="tparsetagManager" />
+		</property>
+		<property name="turlManager">
+			<ref bean="turlManager" />
+		</property>
+		<property name="tbusinesstypeManager">
+			<ref bean="tbusinesstypeManager" />
+		</property>
+	</bean>
+
+
+	<!-- Admin Action -->
+	<bean name="adminAction" class="com.lgq.controller.AdminAction"
+		scope="prototype">
+	</bean>
+
+	<!-- Send Email Action -->
+	<bean name="sendEmailAction" class="com.lgq.controller.SendEmailAction"
+		scope="prototype">
+	</bean>
+
+
+	<!-- Configure jdbc.properties -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="classpath:jdbc.properties" />
+
+	<!-- Data Source configuration -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="${jdbc.driverClassName}"
+		p:url="${jdbc.databaseurl}" p:username="${jdbc.username}" p:password="${jdbc.password}" 
+		p:validationQuery="SELECT 1" p:testOnBorrow="true"/>
+
+	<!-- Configure hibernate session factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- Run SQL queries in transactions -->
+	<tx:annotation-driven />
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+</beans>

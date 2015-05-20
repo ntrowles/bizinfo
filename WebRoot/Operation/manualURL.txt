@@ -1,0 +1,28 @@
+/**********************************************/
+  Administrator Manual
+  Version 2.1
+  2015-02-09
+/**********************************************/
+
+--------- How to add new URL List?  ---------------
+
+You can add multiple links by parsing one URL.
+ - click 'operations' on Top bar
+ - click 'add new URL list'
+ - fill in all required information
+ - click 'submit new URL' button, then you will see the new URL on the above list
+ - click 'Edit' in the response row to the new URL, then you will see the tag page.
+ - At the bottom of page, you will find 'Add more tag' button.
+     PS: In this step, you should have the knowledge of HTML tag. Since different website have
+         different style of HTML tag name, this step needs the administrator find the specific
+         tag name, and fill them into the tag list.
+ - click 'add more tag', it will appear HTML tags, and you should fill in the response tags in the
+   target website.
+      PS: In this step, you should analyze the HTML structure of target website using 'view page source' with
+          right click on the target page. 
+ - After you fill all correct tag information, then click 'Add Tag Content', the tag content will 
+   be added to the blank box under 'tag content', and the button 'Add New Tag' will appear.
+
+ - click ' Add New Tag' button, the new tag content will appear in the above list.
+ - Finally, you click 'Get' label in the middle, you will get all related links from the provided URL.
+ 

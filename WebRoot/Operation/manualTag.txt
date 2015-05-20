@@ -1,0 +1,12 @@
+/**********************************************/
+  Administrator Manual
+  Version 2.1
+  2015-02-09
+/**********************************************/
+
+--------- How to add the tag for parsing URL? -----------------
+
+ you should analyze the HTML structure of target website using 'view page source' with
+          right click on the target page.
+          
+Based on the structure of HTML, you should fill in the refer value of tag attribute.

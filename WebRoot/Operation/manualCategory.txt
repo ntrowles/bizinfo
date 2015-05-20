@@ -1,0 +1,14 @@
+/**********************************************/
+  Administrator Manual
+  Version 2.1
+  2015-02-09
+/**********************************************/
+
+
+------ How to add new category? --------
+
+Firstly, you need to click the label 'Add Categories' on the left side.
+Then, on the target page, you can find the 'Add New Category' section at the bottom of page.
+Finally, you can submit the button after you putting the content in the blank box. A new category will show
+in the table at the middle page.
+

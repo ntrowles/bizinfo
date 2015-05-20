@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<mapping class="com.lgq.entity.TbusinesstypeEntity" />
+		<mapping class="com.lgq.entity.TtypefrequencyEntity" />
+		<mapping class="com.lgq.entity.TurlEntity" />
+		<mapping class="com.lgq.entity.TparsetagEntity" />
+		<mapping class="com.lgq.entity.TparselinksEntity" />
+		<mapping class="com.lgq.entity.TuserEntity" />
+		<mapping class="com.lgq.entity.TvisitstatisticsEntity" />
+		<mapping class="com.lgq.entity.TvisitorEntity" />
+		<mapping class="com.lgq.entity.EmployeeEntity" />
+	</session-factory>
+</hibernate-configuration>
