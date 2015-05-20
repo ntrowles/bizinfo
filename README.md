@@ -1,9 +1,11 @@
 # bizinfo project created by Joseph_Lin
 
 I. Introduction
+
 Business Information System is developed for business migrations in Australia. The system graps the business information (e.g., business sale, migration information, etc.) from the given links, and displays the related information to the clients.
 
 II. Project Information
+
 Note:
 This project was built on the Eclipse (version: eclipse-jee-luna).
 
