@@ -61,6 +61,7 @@ This project was built on the Eclipse (version: eclipse-jee-luna).
   6.2 Demo (Deployed on the server at DigitalOcean.com)
       Main Page: http://128.199.219.7:8080/bizinfo/
       Guest visitor Page: http://128.199.219.7:8080/bizinfo/guestUser/guestlogin.jsp
-      Administrator login page: http://128.199.219.7:8080/bizinfo/admin/login.jsp
+      Administrator login page: http://128.199.219.7:8080/bizinfo/admin/login.jsp 
+      (username: gongqi, password: 123456)
 
 
