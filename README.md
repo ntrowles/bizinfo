@@ -2,12 +2,12 @@
 
 I. Introduction
 
-Business Information System is developed for business migrations in Australia. The system graps the business information (e.g., business sale, migration information, etc.) from the given links, and displays the related information to the clients.
+	Business Information System is developed for business migrations in Australia. The system graps the business information (e.g., business sale, migration information, etc.) from the given links, and displays the related information to the clients.
 
 II. Project Information
 
-Note that:
-This project was built using Eclipse (version: eclipse-jee-luna).
+	Note that:
+	This project was built using Eclipse (version: eclipse-jee-luna).
 
 1. Framework
 	
@@ -65,13 +65,13 @@ This project was built using Eclipse (version: eclipse-jee-luna).
 
 	3.2 XML configure files
 
- 	. /resources/applicationContext.xml - Spring
+ 		. /resources/applicationContext.xml - Spring
  
- 	. /resources/hibernate.cfg.xml - Hibernate
+ 		. /resources/hibernate.cfg.xml - Hibernate
  
- 	. /resources/struts.xml - Struts
+ 		. /resources/struts.xml - Struts
  	
- 	. /WebRoot/WEB-INF/web.xml - Java Servlet
+ 		. /WebRoot/WEB-INF/web.xml - Java Servlet
 
 	3.3 Presentation (root folder /WebRoot)
 
@@ -103,11 +103,17 @@ This project was built using Eclipse (version: eclipse-jee-luna).
 
   	4.3 Demo (Deployed on the server at DigitalOcean.com)
   
-      		Main Page: http://128.199.219.7:8080/bizinfo/
+      		Main Page: 
+      			
+      			http://128.199.219.7:8080/bizinfo/
       
-      		Guest visitor Page: http://128.199.219.7:8080/bizinfo/guestUser/guestlogin.jsp
+      		Guest visitor Page: 
+      			
+      			http://128.199.219.7:8080/bizinfo/guestUser/guestlogin.jsp
       
-      		Administrator login page: http://128.199.219.7:8080/bizinfo/admin/login.jsp 
-      		(username: gongqi, password: 123456)
+      		Administrator login page: 
+      			
+      			http://128.199.219.7:8080/bizinfo/admin/login.jsp 
+      			(username: gongqi, password: 123456)
 
 
