@@ -29,27 +29,27 @@ This project was built using Eclipse (version: eclipse-jee-luna).
 
    	2.1 Database scheme
    
-   	database name: bizinfo
-	(All .sql files under the folder /sqldata can be imported into MySQL database directly).
+   		database name: bizinfo
+		(All .sql files under the folder /sqldata can be imported into MySQL database directly).
 	
    	2.2 configure file
    
-	/resources/jdbc.properties
+		/resources/jdbc.properties
 	
    	2.3 tables
 	
-	- turl (the given URLs)
-	- tbusinesstype (Business Type)
-	- ttypefrequency (record the visitor's behavior)
-	- tparsetag (HTML Tag)
-	- tparselinks (Parse Result)
-	- tuser (admin user)
-	- tvisitor (record visitors from their android devices)
-	- tvisitstatistics (record visitors's behavior)
+		- turl (the given URLs)
+		- tbusinesstype (Business Type)
+		- ttypefrequency (record the visitor's behavior)
+		- tparsetag (HTML Tag)
+		- tparselinks (Parse Result)
+		- tuser (admin user)
+		- tvisitor (record visitors from their android devices)
+		- tvisitstatistics (record visitors's behavior)
 
 	2.4 Transactions (JPA)
 
-	Service class uses annotation @Transactional in method, which essentially run all the database queries execution under the method in a single transaction. 
+		Service class uses annotation @Transactional in method, which essentially run all the database queries execution under the method in a single transaction. 
 	
 3. Folder Structure
    
