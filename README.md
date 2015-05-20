@@ -11,10 +11,13 @@ This project was built on the Eclipse (version: eclipse-jee-luna).
                     Hibernate4 - resources/hibernate.cfg.xml
 
 2. Database
+
    2.1 sql file
 	/sqldata
+	
    2.2 configure file
 	/WebRoot/WEB-INF/jdbc.properties
+	
    2.3 tables
 	database name (MySQL) - bizinfo
 	Tables:
@@ -27,7 +30,8 @@ This project was built on the Eclipse (version: eclipse-jee-luna).
 	- tvisitor (record visitors from their android devices)
 	- tvisitstatistics (record visitors's behavior)
 	
-3. Java Code Arrangement (/src): entity - dao - service - controller
+3. Java Code Arrangement (/src): 
+   The structure: entity - dao - service - controller
  . entity - hibernate - Object
  . dao - spring - database operation
  . service - Spring & Hibernate - access dao
@@ -46,6 +50,7 @@ This project was built on the Eclipse (version: eclipse-jee-luna).
      /appdownload - reload app/download app
      /Operation - add businesstype/url/tag
      /presentation - links management
+
  5.2 Guest Pages
      /guestUser - guest read the related links and download the android apps
 
