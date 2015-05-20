@@ -6,16 +6,24 @@ Business Information System is developed for business migrations in Australia. T
 
 II. Project Information
 
-Note:
-This project was built on the Eclipse (version: eclipse-jee-luna).
+Note that:
+This project was built using Eclipse (version: eclipse-jee-luna).
 
 1. Framework
 	
-	1) components: JSP + Struts2 + Spring4 + Hibernate4
+	1.1 components: JSP + Struts2 + Spring4 + Hibernate4
 
-	2) configure files: Struts2 - resources/struts.xml;
-                    Spring4 - resources/applicationContext.xml;
-                    Hibernate4 - resources/hibernate.cfg.xml	
+	1.2 integration architecture: 
+		
+		Struts (JSP Web page) <---> Spring DI (IoC) <--> Hibernate (JPA DAO) <---> Database
+	
+		1.2.1 Spring + Struts Integration
+
+		This is core logic and starts from registering ContextLoaderListener and StrutsPrepareAndExecuteFilter in web.xml. StrutsPrepareAndExecuteFilter look up struts.xml file in classpath and configure strut’s specific things like Action mappings, global forwards and other things defined in struts.xml file.
+		
+		1.2.2 Spring + Hibernate Integration
+
+		Best place is to integrate using Spring’s extensive capabilities to work with different ORMs using excellent use of dependency injection.
 
 2. Database
 
